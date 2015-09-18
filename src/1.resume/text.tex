@@ -1,0 +1,203 @@
+Résumé Modélisation et simulation
+
+1. Phénomènes et modèles:
+
+En sciences, on utilise beaucoup de modèle. Par exemple, pour essayer de deviner comment une maladie peut se propager. On appelle ces phénomènes des systèmes dynamiques.
+Un système est un ensemble d’agents qui agissent. Quand le système est dynamique, on va analyser les transformation du système au cours du temps.
+
+Grande complexité => Balance entre précision et efficacité.
+
+1.1. Système dynamique:
+U : entrée du système.
+Y : sortie  ( conséquences).
+U(t) et Y(t) dans un système dynamique.
+
+Plusieurs phases dans le développement d’un modèle.
+Savoir ce qu’on veut modéliser.
+Expliquer les phénomènes.
+Prédiction.
+Possibilité d’agir sur le modèle.
+Pour le faire facilement, on formalise mathématiquement.
+
+1.2. Construction de modèles mathématiques:
+Construire un modèle est difficile.
+Tout les modèles sont faux, mais certains sont utiles. ( Jamais exact, toujours une approximation.)
+
+Principe du rasoir d’Ockam est qu’il ne faut pas faire plus compliqué que nécessaire.
+Moins il y a de paramètre, moins il y a de risques d’erreurs.
+
+Avant de construire un modèle, certains points permettent d'orienter la recherche :
+L'objectif : Comprendre ou prédire ?
+La complexité : quelle est la complexité requise par le modèle.
+La précision requise : pas trop élevée pour ne pas introduire d'erreurs, mais suffisante pour qu'il soit utile.
+La procédure de validation : c'est bien beau les formules, mais il faut savoir comment on va tester le modèle. On peut par exemple garder un ensemble de données d'entrainement. Si les prédictions sur ces points connus sont bonnes, alors on peut s'en servir pour la réalité. Par contre, si ces points ont été mis de côté, ils ne peuvent servir à la construction du modèle, ce qui peut avoir des impacts sur la précision.
+
+1.3. Simulation:
+Quand les modèles sont trop complexes, on ne peut plus observer le modèle analytique.
+On va alors le simuler: On lui donne énormément d’entrée, et on va regarder les sorties.
+On ne s’attend pas a trouver l’optimum global ( car toutes les solutions ne sont pas explorée.)
+Utile si on cherche une solution approchée ou si on veut prédire des choses.
+
+2. Systèmes dynamiques:
+Les ensemble Oméga et Gamma sont les ensembles des fonctions d’entrées ou de sorties.
+Le temps doit être défini par une échelle de temps.
+
+2.1. Systèmes statiques et dynamiques:
+Un système statique est entièrement défini par l’entrée. Si l’entrée change, la sortie change, et il y aura toujours la même relation entre les U et les Y. Si l’évolution du système dépend du temps, le système devient dynamique.
+
+2.2. L’état d’un système:
+L’état d’un système est ce qui permet de caractériser son passé. C’est une variable x. Connaitre x’t) permet de calculer y(t).
+La fonction de transition permet de passer d’un état au suivant.
+
+Quelques propriétés de la fonction de transition:
+Consistance: Une même série d’entrées doit toujours donner la même solution.
+Causalité: Si on applique deux entrées u1 et u2 ( avec u1 = u2), la sortie doit être la même.
+
+2.3. Mouvement et trajectoire:
+Le mouvement est la valeur de l’état du système au fil du temps.
+La trajectoire ne  prend plus en compte le temps.
+
+2.4. Définitions:
+État d’équilibre: état vers lequel tend le système.
+Système invariant: Système sans usure, repartir du même état avec la même fonction d’entrée va donner la même sortie. ( != statique car toujours notion de temps.)
+
+Un état est accessible à partir d’un autre quand il existe t1 et t2 ( t1 < t2) tq l’état du système en t1 est l’état de dépard et l’état “accessible” est l’état du système en t2.
+
+Deux états sont équivalents si leurs sorties sont égales et si toutes fonction d’entrée va faire que leurs états successifs sont les même. Si il n’y a plus d’état équivalents, le système est sous forme réduite.
+
+Un système observable est un système dont on peut reconstruire le passé.
+
+2.5. Systèmes complexes:
+Un système complexe est un ensemble de sous-systèmes.
+les sous-systèmes sont en série ou cascade si la sortie du premier est l’entrée du second.
+Ils sont parallèle si ils ont la même entrée mais produisent des sorties indépendantes.
+Les systèmes hiérarchiques sont une combinaison de systèmes en cascade et en parallèle.
+Lorsque la sortie d’un système est ramenée vers son entrée, il y a rétroaction ( positive si la sortie est amplifiée, négative si elle est diminuée.)
+
+2.6. Systèmes à temps continu et temps discret:
+
+Pour des temps discret, il faut faire la différence entre:
+Temps synchrone: fréquence de temps.
+Temps asynchrone: Intervalles de temps variables.
+
+2.7. Automates:
+
+Un automate est un ensemble dynamique particulier. Le système est invariant, le temps et l’espace des états sont discrets.
+
+On le représente avec une matrice de transition ( Associe pour chaque état, l’état cible d’une transition.)
+
+Graphiquement, on le représente par des noeuds ( état ) et des arcs ( évenements ). Un état d’équilibre est montré par une boucle. Un état est accessible depuis un autre, si il y a un chemin pour passer de l’un à l’autre. Le système est connexe si il y a un chemin entre chaque noeud du graphe.
+
+2.7.1. Automates cellulaires:
+
+On a des cellules ( placées dans un vecteur ou une matrice ), et la valeur de chaque cellules dépend de l’état de ses voisins à l’instant précédent.
+Le jeu de la vie est un automate cellulaire à deux dimensions.
+Le rhombic dodecahedron permet de couvrir l’entièreté de l’espace euclidien ( une cellule à 12 voisins.)
+
+2.8. Ensembles infinis et systèmes continus:
+
+Un système continu est régulier si on impose ces contraintes:
+La fonction de transition doit être continue par rapport à tous ses arguments
+La dérivée de cette fonction doit aussi être continue
+La fonction eta, qui transforme les états en sorties, doit aussi être continue
+
+un système régulier est autonome s’il peut être exprimé par une équation différentielle qui ne dépend pas de t.
+
+2.8.1. Équations différentielles:
+Un système à dimensionalité finie est un système où les ensembles U, X et Y ont un nombre fini de dimensions.
+L’équation différentielle donnant l’évolution des variables d’état est appelé flot.
+
+La plupart des systèmes dynamiques tendent à évoluer vers un état d’équilibre. On étudie généralement cet état.
+On le trouve en résolvant le système d’équation différentielles pour u(0). Quand on trouve des valeurs de x qui annulent le système, ce sont des états d’équilibre.
+
+2.8.2. Espace des phases:
+Si on considère les états Xi et X’i, on peut représenter sur un graphe ces états et leurs dérivées par des flèches. L’origine est (X1,X2,...) et la direction (X’1,X’2,...). Cela donne toutes les trajectoires possibles. => Portrait de phase.
+
+2.8.3. Exemples:
+Dans le changement de concentration: le changement sur x dépend entièrement de l’entrée.
+x'(t) = c x(t) et y(t) = x(t)
+
+Dans le cas d’une croissance exponentielle
+x'(t) = c x(t) et y(t) = x(t). La solution est x(t) = x(0) ect
+
+La croissance logistique ne va pas jusqu’à l’infini. Ce changement de croissance est modélisé en utilisant x'(t) = c x(t) (1 - x(t)/k). Plus x(t) se rapproche de k, moins le système croit.
+
+2.8.4. Stabilité:
+Un état d’équilibre s’exprime en disant qu’un mouvement est stable quand une perturbation epsilon de l’entrée produit une perturbation de sortie delta du même ordre que epsilon.
+
+La stabilité asymptotique permet de dire si un système va retomber sur l’état d’équilibre.
+Un système peut s’éloigner très fort de l’état d’équilibre mais pourrait toujours y revenir. Le système n’est alors pas stable mais asymptotiquement stable.
+
+2.8.5. Analyse de stabilité:
+On va utiliser les critères de Liapounov.
+L’idée de base est que si on trouve une fonction V continue, définie positive autour de son état d’équilibre. Si sa dérivée est semi-définie négative, alors le système est stable en son état d’équilibre. Si la dérivée est définie négative, le système est asymptotiquement stable.
+
+Une fonction est définie positive en un point si autour de ce point la fonction est strictement positive.
+Une fonction est semi-définie positive si elle respecte la même condition, mais elle peut passer par zéro en certains points
+Pareil pour définie négative et semi-définie négative.
+
+Le plus compliqué est de trouver la fonction V. Dans un système physique on peut utiliser l’énergie.
+
+Le critère d’instabilité de Liapanouv: Si V est définie positive, et V’ définie positive aussi, alors le système est instable.
+
+2.8.6. Systèmes autonomes:
+Si on a un système qui fait apparaître le temps dans ses équations, on peut le transformer en système autonome en rajoutant une variable d’état égale au temps. La dérivée de cette variable vaut alors 1.
+
+2.9. Système dynamiques linéaires:
+Un mouvement est libre quand on a aucune entrée dessus, sinon le mouvement est forcé.
+Dans un système linéaire, on peut exprimer tout mouvement comme la somme d’un mouvement forcé et d’un mouvement libre.
+Dans les systèmes linéaires, la solution est de forme:
+x(t) = e(At) * x(0) + 0te(A(t-))*(B)
+
+2.9.1. Stabilité:
+Le polynôme caractéristique d’une matrice est:
+det( I - A) = n + (a1 n-1) + ( a2 n-2) + ... +an
+Les racines de cette équation sont les valeurs propres de la matrice, qu’on peut associer à des vecteurs propres. Quand on applique la transformation décrite par la matrice au vecteur propre, il est multiplié par une valeur et ne change pas de direction.
+
+Si toutes les valeurs propres ont une partie réelle négative, le système est asymptotiquement stable.
+Le système est stable si toutes les valeurs propres sont non-positives, sinon le système est instable.
+
+Pour éviter le calcul de toutes ces valeurs propres, il existe des critères.
+Le critère de Hurwitz dit qu'une fois que le polynome caractéristique a été calculé, il suffit de prendre tous les coefficients a_n et de les mettre sur la diagonale d'une matrice décrite en slide 19. Si tous les mineurs de cette matrice sont positifs, le système est stable.
+Un mineur est le déterminant d’une sous-matrice allant de (0,0) à (n,n) dans une matrice plus grande.
+
+La formule de Souriau permet de  trouver le polynôme caractéristique plus rapidement qu’en calculant des déterminant. On se base sur le fait que la somme des valeurs propres est égale à la trace de la matrice.
+a = - Tr(A), b = - 12(aTr(A) + a²  Tr(A) )
+2.9.2. Premier ordre:
+La matrice A est maintenant carrée de taille 2x2. 
+Un système est  simple si le déterminant de A est non-nul. Sinon non-simple.
+ On prend l’exemple de deux populations x1 et x2. La matrice A représente l’influence qu’a la quantité x1 sur x1 et x2 et x2 sur x1 et x2.
+
+On peut facilement deviner si un système sera stable ou non.
+Il est instable si les deux populations croissent sans cesse et asymptotiquement stable si les deux populations disparaissent. Le système est stable si une population est la proie de l’autre, on aura un cycle dans les populations.
+
+Pour résoudre le système, on calcule le polynome caractéristique, qui va nous donner les deux valeurs propres. On pourra alors trouver le x(t) de chaque population.
+
+Pour étudier la stabilité de ce système, il va falloir analyser toutes les classes de valeurs propres qu’on peut avoir:
+Réelles et distinctes : La solution s’exprime sous la forme: X1(t) =c1e(1t) v1, X2(t) = c2e(2 t)v2 où v1 et v2 sont les vecteurs propres.
+Asymptotiquement stable: Si les deux valeurs propres sont négatives.
+Instable sinon.
+Une des valeurs propres est nulle : On a une direction d’équilibre. Seul la deuxième valeur propre et son vecteur propre permettent d’avoir une convergence ou une divergence.
+Non-distinctes et non-nulles :
+Diverge si positives.
+Converge si négatives.
+Si la matrice A est diagonalisable, on va avoir un noeud singulier : toutes les trajectoires passent par ce noeud et convergent vers lui.
+Complexes : Des comportements cycliques apparaissent. On regarde la partie réelle des valeurs propres pour avoir des informations sur la stabilité. Là, on appelle les noeuds les foyers.
+Si ils sont stable, on converge en spiralant, si ils sont instables on s’en éloigne en spiralant.
+Si il y a un équilibre, ni stable ni instable, on voit apparaître des ellipses et le foyer devient un centre de dynamique.
+
+Le but de tout ça est d'effectuer un dessin qualitatif. On a déjà vu comment les construire mais on ajoute la notion d’isoclines. Ce sont des courbes sur lesquelles une des dérivées vaut 0. Ce dessin représente donc les vecteurs propres et les isoclines.
+Dans un cas complexes, on a pas de vecteurs propres, seulement les isoclines.
+
+
+2.10. Systèmes non-linéaires:
+Il y a généralement plusieurs points d’équilibre dans un système non linéaire. En fonction du point de départ, on obtient des trajectoires différentes.
+
+Les système linéaires sont de moins en moins utilisés car on s’est rendu compte qu’ils étaient trop simples.
+
+2.10.1. Linéarisation:
+Quand on linéarise un système, on prend en fait la tangente en un point et on approxime la fonction par celle-ci.
+L’analyse de stabilité est toujours un problème complexe. Comme le système a été linéarisé, il y a des critères qui disent si l’analyse du système linéarisé peut être considérée comme étant linéaire d’origine.
+
+Si toutes la valeurs propres de A ont une partie réelle négative, alors le système non linéaire est asymptotiquement stable autour du point utilisé pour la linéarisation. Si elles sont positives, le système est instable.
+Si une des valeurs réelles est nulle, cela veut dire que les composantes non-linéaires du système sont trop importantes pour être linéarisées. On ne peut alors rien dire.
